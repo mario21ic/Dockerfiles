@@ -1,0 +1,23 @@
+version: '2'
+services:
+
+  base:
+    image: mario21ic/apache2-php53:base
+    build:
+      context: ./base/
+
+  apache2:
+    image: mario21ic/apache2-php53:apache2
+    build:
+      context: ./apache2/
+    volumes:
+      - ./:/var/www/html/
+      - ./apache2/logs/:/var/log/apache2/
+    ports:
+      - 80:80
+
+  composer:
+    image: mario21ic/apache2-php53:composer
+    build:
+      context: ./composer/
+
