@@ -1,26 +1,12 @@
 version: '2'
 services:
 
-  base:
-    image: mario21ic/nginx-php56:base
+  backend:
+    image: mario21ic/nginx-php56:latest
     build:
-      context: ./base/
-
-  nginx:
-    image: mario21ic/nginx-php56:nginx
-    build:
-      context: ./nginx/
+      context: ./docker/
     volumes:
-      - ./:/app/
-      - ./nginx/logs:/var/log/nginx/
+      - ./src:/app/
+      - ./logs:/var/log/nginx/
     ports:
       - 80:80
-
-  composer:
-    image: mario21ic/nginx-php56:composer
-    build:
-      context: ./composer/
-    volumes:
-      - ./:/app
-      - ./docker/ssh/:/app/.ssh/
-    command: composer update
