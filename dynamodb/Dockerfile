@@ -6,7 +6,7 @@ ENV VERSION 1.0
 RUN mkdir /var/dynamodb_wd
 WORKDIR /var/dynamodb_wd
 
-RUN wget -O /var/dynamodb_wd/dynamodb_local_latest http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_latest
+RUN wget -O /var/dynamodb_wd/dynamodb_local_latest https://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz
 RUN tar xfz /var/dynamodb_wd/dynamodb_local_latest
 
 ENTRYPOINT ["/usr/bin/java", "-Djava.library.path=.", "-jar", "DynamoDBLocal.jar", "-dbPath", "/var/dynamodb_local"]
