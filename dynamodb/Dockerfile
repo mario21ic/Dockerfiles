@@ -1,4 +1,4 @@
-FROM java:7-jre
+FROM java:8
 
 MAINTAINER Mario Inga <mario21ic@gmail.com>
 ENV VERSION 1.0

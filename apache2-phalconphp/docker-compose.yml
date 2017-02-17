@@ -1,0 +1,16 @@
+backend:
+    build: ./docker/
+    volumes:
+        - ./:/var/www/html
+        - ./logs/apache2:/var/log/apache2/
+    links:
+        - mongo
+    ports:
+        - "80:80"
+
+mongo:
+    image: mongo:2.6
+#    command: --storageEngine=wiredTiger
+    ports:
+       - "27017:27017"
+
